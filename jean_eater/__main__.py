@@ -11,7 +11,12 @@ def main():
 
     while True:
         joke = get_jean_joke()
-        api.update_status(joke)
+        try:
+            api.update_status(joke)
+            print(f"Tweeted joke, {joke}")
+        except Exception as e:
+            print(f"An error occured: {e}")
+
         time.sleep(60 * 60 * 24)
 
 def get_jean_joke() -> str:
